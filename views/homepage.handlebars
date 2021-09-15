@@ -7,13 +7,7 @@
       {{{get_emoji}}}
       <a href="/recipe/{{recipe.id}}">{{recipe.name}}</a>
     </h2>
-    <p>
-      <span for="img" aria-label="money">💲</span>
-      <!-- Pass needed_funding value to the helper function -->
-      <span class="dollar-amount">{{format_amount recipe.needed_funding}}</span>
-      needed!
-    </p>
-    <p>Created by {{recipe.user.name}} on {{format_date recipe.date_created}}</p>
+    <p>Created by {{project.user.name}} on {{format_date project.date_created}}</p>
   </div>
   <div class="col-md-7">
     <p>
