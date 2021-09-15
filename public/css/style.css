@@ -24,10 +24,20 @@ header, .recipe:not(:last-child) {
 
 }
 
-.funCookingBackground {
-  background-image: url("../assets/funCooking.jpeg");
-  background-size: 100% 100%;
+.breakfastFunBackground {
+  background-image: url("../assets/ratCooking.jpg"); 
+  min-height: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.RecipeBackground {
+  background-image: url("../assets/PlatedBG.jpg");
+  min-height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .home-header {
@@ -49,3 +59,7 @@ header {
   color: black;
 }
 
+.row {
+  color: #ccc;
+  font-family: 'Times New Roman', Times, serif;
+}
