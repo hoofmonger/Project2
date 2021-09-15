@@ -15,17 +15,18 @@ Recipe.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    ingredients: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    cooking_instructions: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
-    },
-    needed_funding: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
