@@ -8,8 +8,7 @@ router.get('/', (req, res) => {
       attributes: [
           'id',
           'recipe_text',
-          'name',
-          'created_at'
+          'name'
         ],
       order: [[ 'DESC']],
       include: [
@@ -19,7 +18,7 @@ router.get('/', (req, res) => {
           },
           {
               model: Comment,
-              attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
+              attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
               include: {
                   model: User,
                   attributes: ['name']
@@ -43,8 +42,7 @@ router.get('/:id', (req, res) => {
       'id',
       'ingredients',
       'cooking_instructions',
-      'name',
-      'created_at'
+      'name'
     ],
     include: [
       {
@@ -53,7 +51,7 @@ router.get('/:id', (req, res) => {
       },
       {
           model: Comment,
-          attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
+          attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
           include: {
               model: User,
               attributes: ['name']

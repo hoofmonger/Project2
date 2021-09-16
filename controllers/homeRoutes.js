@@ -6,12 +6,11 @@ router.get('/', (req, res) => {
   Recipe.findAll({
       attributes: [
           'id',
-          'name',
-          'created_at'
+          'name'
       ],
       include: [{
               model: Comment,
-              attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
+              attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
               include: {
                   model: User,
                   attributes: ['name']
@@ -45,12 +44,11 @@ router.get('/recipe/:id', (req, res) => {
               'id',
               'name',
               'ingredients',
-              'cooking_instructions',
-              'created_at'
+              'cooking_instructions'
           ],
           include: [{
                   model: Comment,
-                  attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
+                  attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
                   include: {
                       model: User,
                       attributes: ['name']
