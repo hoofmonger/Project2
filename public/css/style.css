@@ -1,4 +1,5 @@
-header, .recipe:not(:last-child) {
+header,
+.recipe:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
 
@@ -13,19 +14,18 @@ header, .recipe:not(:last-child) {
 }
 
 .no-button:hover {
-  color:blue;
+  color: blue;
   text-decoration: underline;
 }
 
 .cookBookBackground {
-  background-image: url("../assets/cookbook.jpeg");
+  background-image: url('../assets/cookbook.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
-
 }
 
 .breakfastFunBackground {
-  background-image: url("../assets/ratCooking.jpg"); 
+  background-image: url('../assets/ratCooking.jpg');
   min-height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -33,7 +33,7 @@ header, .recipe:not(:last-child) {
 }
 
 .RecipeBackground {
-  background-image: url("../assets/PlatedBG.jpg");
+  background-image: url('../assets/PlatedBG.jpg');
   min-height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -45,7 +45,7 @@ header, .recipe:not(:last-child) {
   color: #ccc;
 }
 header {
-  background-color:black;
+  background-color: black;
   color: #ccc;
 }
 .nav-a {
@@ -72,4 +72,19 @@ p {
 h2 {
   color: #ccc;
   font-family: 'Times New Roman', Times, serif;
+}
+
+.comment {
+  padding: 1%;
+  margin-bottom: 1%;
+}
+
+.comment:nth-child(odd) {
+  background-color: #f0f5ff;
+}
+
+.comment .meta {
+  font-size: 90%;
+  margin-bottom: 0.5%;
+  opacity: 0.6;
 }
