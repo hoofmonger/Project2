@@ -4,19 +4,19 @@ const searchBar = async (event) => {
 const searchBarForm = document.querySelector('.searchbar')
 const searchBarBackEnd = require('../../controllers/api/searchRoutes')
 
-if (name == Recipe.name) {
+if (searchBarForm == Recipe.name) {
     const response = await fetch(`/api/recipes`, {
-      method: 'POST',
-      body: JSON.stringify({ name,}),
+      method: 'GET',
+      body: JSON.stringify({searchBarForm}),
       headers: {
         'Content-Type': 'application/json',
       },
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace(`/recipe/${searchBarForm}`);
     } else {
-      alert('Failed to create recipe');
+    //   alert('Failed to create recipe');
     }
   }
 }

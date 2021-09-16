@@ -3,7 +3,7 @@ const { Recipe, User } = require('../../models');
 // const withAuth = require('../../utils/auth');
 // const { search } = require('./userRoutes');
 
-const searchRoute = router.get(`/:name`, async (req, res) => {
+const searchRoute = router.get(`/search/:name`, async (req, res) => {
     try {
       // Get all recipes and JOIN with user data
       const recipeData = await Recipe.findAll({
