@@ -2,13 +2,13 @@ const newFormHandler = async (event) => {
   event.preventDefault();
 
   const name = document.querySelector('#recipe-name').value.trim();
-  const needed_funding = document.querySelector('#recipe-funding').value.trim();
-  const description = document.querySelector('#recipe-desc').value.trim();
+  const instructions = document.querySelector('#recipe-ins').value.trim();
+  const ingredients = document.querySelector('#recipe-ingr').value.trim();
 
-  if (name && needed_funding && description) {
+  if (name && instructions && ingredients) {
     const response = await fetch(`/api/recipes`, {
       method: 'POST',
-      body: JSON.stringify({ name, needed_funding, description }),
+      body: JSON.stringify({ name, instructions, ingredients }),
       headers: {
         'Content-Type': 'application/json',
       },

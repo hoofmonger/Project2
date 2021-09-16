@@ -1,38 +1,130 @@
 const router = require('express').Router();
-const { Recipe } = require('../../models');
+const sequelize = require('../../config/connection');
+const { User, Recipe, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
-  try {
-    const newRecipe = await Recipe.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
-
-    res.status(200).json(newRecipe);
-  } catch (err) {
-    res.status(400).json(err);
-  }
+router.get('/', (req, res) => {
+  Recipe.findAll({
+      attributes: [
+          'id',
+          'recipe_text',
+          'name'
+        ],
+      order: [[ 'DESC']],
+      include: [
+          {
+              model: User,
+              attributes: ['name']
+          },
+          {
+              model: Comment,
+              attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
+              include: {
+                  model: User,
+                  attributes: ['name']
+              }
+          }
+      ]
+  })
+  .then(dbRecipeData => res.json(dbRecipeData))
+  .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+  });
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
-  try {
-    const recipeData = await Recipe.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
+router.get('/:id', (req, res) => {
+  Recipe.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      'id',
+      'ingredients',
+      'cooking_instructions',
+      'name'
+    ],
+    include: [
+      {
+        model: User,
+        attributes: ['name']
       },
+      {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
+          include: {
+              model: User,
+              attributes: ['name']
+          }
+      }
+    ]
+  })
+    .then(dbRecipeData => {
+      if (!dbRecipeData) {
+        res.status(404).json({ message: 'No recipe found with this id' });
+        return;
+      }
+      console.log(dbRecipeData);
+      res.json(dbRecipeData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
+});
 
-    if (!recipeData) {
-      res.status(404).json({ message: 'No recipe found with this id!' });
-      return;
+router.post('/', withAuth, (req, res) => {
+  Recipe.create({
+      name: req.body.name,
+      recipe_ingredients: req.body.recipe_ingredients,
+      recipe_instructions: req.body.recipe_instructions,
+      user_id: req.session.user_id
+  })
+  .then(dbRecipeData => res.json(dbRecipeData))
+  .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+  });
+});
+
+router.put('/:id', withAuth, (req, res) => {
+  Recipe.update(req.body,
+      {
+          where: {
+              id: req.params.id
+          }
+      }
+  )
+  .then(dbRecipeData => {
+      if (!dbRecipeData) {
+          res.status(404).json({ message: 'No recipe found with this id' });
+          return;
+      }
+      res.json(dbRecipeData);
+  })
+  .catch(err => {
+      console.log(err);
+      res.status(500).json(err)
+  });
+});
+
+router.delete('/:id', withAuth, (req, res) => {
+  Recipe.destroy({
+    where: {
+      id: req.params.id
     }
-
-    res.status(200).json(recipeData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  })
+    .then(dbRecipeData => {
+      if (!dbRecipeData) {
+        res.status(404).json({ message: 'No recipe found with this id' });
+        return;
+      }
+      res.json(dbRecipeData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

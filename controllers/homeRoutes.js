@@ -1,52 +1,80 @@
 const router = require('express').Router();
-const { Recipe, User } = require('../models');
+const { Recipe, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
-  try {
-    // Get all recipes and JOIN with user data
-    const recipeData = await Recipe.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
+router.get('/', (req, res) => {
+  Recipe.findAll({
+      attributes: [
+          'id',
+          'name'
       ],
-    });
-
-    // Serialize data so the template can read it
-    const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      recipes, 
-      logged_in: req.session.logged_in 
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+      include: [{
+              model: Comment,
+              attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
+              include: {
+                  model: User,
+                  attributes: ['name']
+              }
+          },
+          {
+              model: User,
+              attributes: ['name']
+          }
+      ]
+  })
+      .then(dbRecipeData => {
+          const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
+          console.log('------------------------------------------');
+          console.log(recipes);
+          console.log('------------------------------------------');
+          res.render('homepage', { recipes });
+      })
+      .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+      });
 });
 
-router.get('/recipe/:id', async (req, res) => {
-  try {
-    const recipeData = await Recipe.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+router.get('/recipe/:id', (req, res) => {
+  Recipe.findOne({
+          where: {
+              id: req.params.id
+          },
+          attributes: [
+              'id',
+              'name',
+              'ingredients',
+              'cooking_instructions'
+          ],
+          include: [{
+                  model: Comment,
+                  attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
+                  include: {
+                      model: User,
+                      attributes: ['name']
+                  }
+              },
+              {
+                  model: User,
+                  attributes: ['name']
+              }
+          ]
+      })
+      .then(dbRecipeData => {
+          if (!dbRecipeData) {
+              res.status(404).json({ message: 'No recipe found with this id' });
+              return;
+          }
+          const recipe = dbRecipeData.get({ plain: true });
+          console.log(recipe);
+          res.render('recipe', { recipe, loggedIn: req.session.loggedIn });
 
-    const recipe = recipeData.get({ plain: true });
 
-    res.render('recipe', {
-      ...recipe,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+      })
+      .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+      });
 });
 
 // Use withAuth middleware to prevent access to route
