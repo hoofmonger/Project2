@@ -30,6 +30,7 @@ router.post('/', withAuth, (req, res) => {
                 comment_text: req.body.comment_text,
                 recipe_id: req.body.recipe_id,
                 user_id: req.session.user_id,
+                rating: req.body.rating
             })
             .then(dbCommentData => res.json(dbCommentData))
             .catch(err => {

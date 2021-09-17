@@ -31,8 +31,12 @@ Comment.init(
                 model: 'recipe',
                 key: 'id'
             }
+        },
+        rating: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
-    }, 
+    },
     {
     sequelize,
     freezeTableName: true,
