@@ -1,31 +1,26 @@
 const router = require('express').Router();
-const { Recipe, User } = require('../../models');
+const { Recipe } = require('../../models');
 // const withAuth = require('../../utils/auth');
 // const { search } = require('./userRoutes');
 
-const searchRoute = router.get(`/search/:name`, async (req, res) => {
+router.get(`/:name`, async (req, res) => {
+  console.log("test");
     try {
       // Get all recipes and JOIN with user data
-      const recipeData = await Recipe.findAll({
-        include: [
-          {
-            model: User,
-            attributes: ['name'],
-          },
-        ],
-      });
+      const recipeData = await Recipe.findOne({
+           where: {
+             name: req.params.name
+           },
+           });
   
       // Serialize data so the template can read it
       const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
   
       // Pass serialized data and session flag into template
-      res.render('homepage', { 
-        recipes, 
-        logged_in: req.session.logged_in 
-      });
+      res.json(recipes)
     } catch (err) {
       res.status(500).json(err);
     }
   });
 
-  module.exports=searchRoute
+  module.exports=router
