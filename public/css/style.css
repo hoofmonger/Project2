@@ -19,7 +19,6 @@ header,
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-
 }
 
 .home-header {
@@ -123,7 +122,6 @@ a {
   text-decoration: none;
   padding-left: 20px;
   padding-right: 20px;
-
 }
 
 a:hover {
@@ -393,6 +391,7 @@ form .form-input {
   padding: 1%;
   margin-bottom: 1%;
   background-color: #fff5eb;
+  opacity: 0.7;
 }
 
 .comment .meta {
@@ -401,7 +400,7 @@ form .form-input {
   opacity: 0.6;
 }
 
-.row .mb-2{
+.row .mb-2 {
   font-size: 30px;
   font-family: 'Times New Roman', Times, serif;
   padding: 20px;
@@ -413,4 +412,12 @@ form .form-input {
 
 .col-md-6 .recipe-list {
   flex-wrap: wrap;
+}
+
+.recipeInfo {
+  background-color: #fff5eb;
+  opacity: 0.7;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
