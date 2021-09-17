@@ -391,7 +391,7 @@ form .form-input {
   padding: 1%;
   margin-bottom: 1%;
   background-color: #fff5eb;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .comment .meta {
@@ -420,27 +420,27 @@ form .form-input {
   padding: 0 10px;
 }
 .rate:not(:checked) > input {
-  position:absolute;
-  top:-9999px;
+  position: absolute;
+  top: -9999px;
 }
 .rate:not(:checked) > label {
-  float:right;
-  width:1em;
-  overflow:hidden;
-  white-space:nowrap;
-  cursor:pointer;
-  font-size:30px;
-  color:#ccc;
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
 }
 .rate:not(:checked) > label:before {
   content: '★ ';
 }
 .rate > input:checked ~ label {
-  color: #ffc700;    
+  color: #ffc700;
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-  color: #deb217;  
+  color: #deb217;
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
@@ -451,7 +451,7 @@ form .form-input {
 }
 .recipeInfo {
   background-color: #fff5eb;
-  opacity: 0.7;
+  opacity: 0.8;
   padding: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
