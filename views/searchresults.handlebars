@@ -1,0 +1,15 @@
+{{#if searchText}}
+{{#each recipes as |recipe| }}
+<div class="row mb-4 recipe">
+  <div class="col-md-5">
+    <h2>
+      <a href="/recipes/{{recipe.id}}">{{recipe.name}}</a>
+    </h2>
+    <p>Created by {{recipe.user.name}} on {{format_date created_at}}</p>
+  </div>
+</div>
+{{/each}}
+
+{{#else !searchText}}
+<h1>No Results found</h1>
+{{/if}}

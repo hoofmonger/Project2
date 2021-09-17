@@ -23,7 +23,7 @@ if (searchText) {
     if (response.ok) {
       document.location.replace(`/recipe/${searchText}`);
     } else {
-    //   alert('Failed to create recipe');
+     alert('Failed to create recipe');
     }
   }
 }
