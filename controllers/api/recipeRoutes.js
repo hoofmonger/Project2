@@ -79,8 +79,8 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
   Recipe.create({
       name: req.body.name,
-      recipe_ingredients: req.body.recipe_ingredients,
-      recipe_instructions: req.body.recipe_instructions,
+      ingredients: req.body.ingredients,
+      cooking_instructions: req.body.cooking_instructions,
       user_id: req.session.user_id
   })
   .then(dbRecipeData => res.json(dbRecipeData))
