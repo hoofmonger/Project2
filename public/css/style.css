@@ -14,8 +14,7 @@ header,
 }
 
 .RecipeBackground {
-  background-image: url('../assets/PlatedBG.jpg'), url("../assets/whiteBG.jpg");
-  background-blend-mode: luminosity;
+  background-image: url('../assets/PlatedBG.jpg');
   min-height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
