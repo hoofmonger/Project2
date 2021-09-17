@@ -386,13 +386,14 @@ form .form-input {
   margin-right: -15px;
 }
 
+.comment-form {
+  margin-bottom: 5%;
+}
+
 .comment {
   padding: 1%;
   margin-bottom: 1%;
-}
-
-.comment:nth-child(odd) {
-  background-color: #f0f5ff;
+  background-color: #fff5eb;
 }
 
 .comment .meta {
