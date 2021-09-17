@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
           console.log('------------------------------------------');
           console.log(recipes);
           console.log('------------------------------------------');
-          res.render('homepage', { recipes });
+          res.render('homepage', { recipes, loggedIn: req.session.loggedIn });
       })
       .catch(err => {
           console.log(err);
@@ -92,7 +92,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     res.render('profile', {
       ...user,
-      logged_in: true
+      loggedIn: true
     });
   } catch (err) {
     res.status(500).json(err);
@@ -101,7 +101,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect('/profile');
     return;
   }
