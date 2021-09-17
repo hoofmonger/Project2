@@ -13,26 +13,14 @@ header,
   font-size: 100%;
 }
 
-.cookBookBackground {
-  background-image: url('../assets/cookbook.jpeg');
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.breakfastFunBackground {
-  background-image: url('../assets/ratCooking.jpg');
-  min-height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
 .RecipeBackground {
-  background-image: url('../assets/PlatedBG.jpg');
+  background-image: url('../assets/PlatedBG.jpg'), url("../assets/whiteBG.jpg");
+  background-blend-mode: luminosity;
   min-height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+
 }
 
 .home-header {
@@ -70,6 +58,8 @@ h2 {
   overflow: hidden;
   background-color: #333;
   font-family: Arial;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .navbar a {
@@ -78,6 +68,7 @@ h2 {
   color: white;
   text-align: center;
   padding: 14px 16px;
+  padding-left: 20px;
   text-decoration: none;
 }
 
@@ -131,10 +122,13 @@ h2 {
 a {
   color: #ccc;
   text-decoration: none;
+  padding-left: 20px;
+  padding-right: 20px;
+
 }
 
 a:hover {
-  color: #ccc;
+  color: #cc5500;
   text-decoration: underline;
 }
 
@@ -406,4 +400,18 @@ form .form-input {
   font-size: 90%;
   margin-bottom: 0.5%;
   opacity: 0.6;
+}
+
+.row .mb-2{
+  font-size: 30px;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 20px;
+}
+
+.col-md-4 {
+  padding: 30px;
+}
+
+.col-md-6 .recipe-list {
+  flex-wrap: wrap;
 }
