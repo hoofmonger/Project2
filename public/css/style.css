@@ -14,13 +14,11 @@ header,
 }
 
 .RecipeBackground {
-  background-image: url('../assets/PlatedBG.jpg'), url("../assets/whiteBG.jpg");
-  background-blend-mode: luminosity;
+  background-image: url('../assets/PlatedBG.jpg');
   min-height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-
 }
 
 .home-header {
@@ -124,7 +122,6 @@ a {
   text-decoration: none;
   padding-left: 20px;
   padding-right: 20px;
-
 }
 
 a:hover {
@@ -394,6 +391,7 @@ form .form-input {
   padding: 1%;
   margin-bottom: 1%;
   background-color: #fff5eb;
+  opacity: 0.7;
 }
 
 .comment .meta {
@@ -402,7 +400,7 @@ form .form-input {
   opacity: 0.6;
 }
 
-.row .mb-2{
+.row .mb-2 {
   font-size: 30px;
   font-family: 'Times New Roman', Times, serif;
   padding: 20px;
@@ -414,4 +412,47 @@ form .form-input {
 
 .col-md-6 .recipe-list {
   flex-wrap: wrap;
+}
+
+.rate {
+  float: left;
+  height: 46px;
+  padding: 0 10px;
+}
+.rate:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+}
+.rate:not(:checked) > label {
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:30px;
+  color:#ccc;
+}
+.rate:not(:checked) > label:before {
+  content: '★ ';
+}
+.rate > input:checked ~ label {
+  color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+.recipeInfo {
+  background-color: #fff5eb;
+  opacity: 0.7;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
