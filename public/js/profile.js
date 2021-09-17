@@ -2,13 +2,13 @@ const newFormHandler = async (event) => {
   event.preventDefault();
 
   const name = document.querySelector('#recipe-name').value.trim();
-  const instructions = document.querySelector('#recipe-ins').value.trim();
+  const cooking_instructions = document.querySelector('#recipe-ins').value.trim();
   const ingredients = document.querySelector('#recipe-ingr').value.trim();
 
-  if (name && instructions && ingredients) {
+  if (name && cooking_instructions && ingredients) {
     const response = await fetch(`/api/recipes`, {
       method: 'POST',
-      body: JSON.stringify({ name, instructions, ingredients }),
+      body: JSON.stringify({ name, cooking_instructions, ingredients }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -42,6 +42,6 @@ document
   .querySelector('.new-recipe-form')
   .addEventListener('submit', newFormHandler);
 
-document
-  .querySelector('.recipe-list')
-  .addEventListener('click', delButtonHandler);
+// document
+//   .querySelector('.recipe-list')
+//   .addEventListener('click', delButtonHandler);

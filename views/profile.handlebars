@@ -8,18 +8,18 @@
   <div class="col-md-6">
     <h3>Create a New recipe:</h3>
 
-    <form class="form new-recipe-form">
+    <form class="form new-recipe-form" id="new-recipe-form">
       <div class="form-group">
         <label for="recipe-name">recipe name:</label>
-        <input class="form-input" type="text" id="recipe-name" name="recipe-name" />
+        <input class="form-input" type="text" id="recipe-name" name="recipe-name">
       </div>
       <div class="form-group">
-        <label for="recipe-desc">ingredients:</label>
-        <textarea class="form-input" id="recipe-desc" name="recipe-desc"></textarea>
+        <label for="recipe-ingr">ingredients:</label>
+        <textarea class="form-input" id="recipe-ingr" name="recipe-ingr"></textarea>
       </div>
       <div class="form-group">
-        <label for="recipe-desc">cooking instructions:</label>
-        <textarea class="form-input" id="recipe-desc" name="recipe-desc"></textarea>
+        <label for="recipe-ins">cooking instructions:</label>
+        <textarea class="form-input" id="recipe-ins" name="recipe-ins"></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
@@ -34,7 +34,7 @@
     {{#each recipes as |recipe|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/recipe/{{recipe.id}}">{{recipe.name}}</a></h4>
+        <h4><a href="/recipes/{{recipe.id}}">{{recipe.name}}</a></h4>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{recipe.id}}">DELETE</button>
@@ -44,4 +44,4 @@
   </div>
   {{/if}}
 </div>
-<script src="./js/profile.js"></script>
+<script src="/js/profile.js"></script>
