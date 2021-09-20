@@ -1,6 +1,8 @@
 header,
 .recipe:not(:last-child) {
   border-bottom: 1px solid #ccc;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .no-button {
@@ -22,16 +24,19 @@ header,
 }
 
 .home-header {
-  padding-left: 20px;
+  padding-right: 150px;
   color: #ccc;
 }
+
 header {
   background-color: black;
   color: #ccc;
 }
+
 .header-h1 {
   text-align: left;
 }
+
 .btn {
   background-color: #ccc;
   color: black;
@@ -455,4 +460,8 @@ form .form-input {
   padding: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
+}
+
+.search {
+  font-size: 30px;
 }
