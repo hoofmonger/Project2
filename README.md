@@ -94,6 +94,7 @@ Contributions are what make the open source community such an amazing place to b
 
 ## License
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 Distributed under the MIT License.
 
 
