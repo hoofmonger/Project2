@@ -12,28 +12,22 @@
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <div class="navbar">
-  <div class="dropdown">
-    <button class="dropbtn">Dropdown
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-    <form action="search" class="searchbar">
-      <input type="text" class="input">
-      <button>Search Recipes</button>
-    </form>
-  </div>
-  </div>
+        <form action="search" class="searchbar">
+          <input type="text" class="input" name="searchbar">
+          <button type="submit">Search Recipes</button>
+        </form>
+        <div class="dropdown">
+          
+
+        </div>
+      </div>
       <h1>
         <a href="/">Recipes</a>
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if loggedIn}}
-        <a href="/profile">profile</a> |
+        <a href="/profile">profile</a>|
         <button class="no-button" id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>
@@ -45,13 +39,14 @@
       {{{ body }}}
     </main>
     <footer>
-      
+
     </footer>
   </div>
   <!-- Render script for logged in users only -->
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
+  <script src="/js/searchBar.js"></script>
 </body>
 
 </html>
