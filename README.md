@@ -22,6 +22,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#deployment">Deployment</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -44,6 +45,10 @@
 ## About The Project
 
 ![Recipe Blog Screenshot](./public/assets/RecipeBlog.png)
+
+## Deployment
+
+https://gentle-hamlet-82940.herokuapp.com/
 
 ### Built With
 
