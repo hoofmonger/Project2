@@ -16,10 +16,11 @@ router.get(`/all/:search`, async (req, res) => {
            });
       // Serialize data so the template can read it
       const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-  console.log(recipes)
+      console.log("these are the matching recipes", recipes)
       // Pass serialized data and session flag into template
-      res.render('searchresults', recipes)
+      res.render('searchresults', {recipes})
     } catch (err) {
+      console.log(err)
       res.status(500).json(err);
     }
   });
